@@ -55,7 +55,7 @@ Server :
 
 for the production server replace `appmaintainer.local` by your hostname
 
-3- For copying the server app to the dist directory use : `npm run copy-server` (Windows only)
+3- For copying the server app only to the dist directory use : `npm run copy-server` (Windows only)
 
 # Deployment
 
