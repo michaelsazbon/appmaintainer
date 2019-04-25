@@ -1,0 +1,13 @@
+.card-container.card {
+    /*max-width: 550px;*/
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.bash {
+    background-color: #343a40;
+    color: white;
+    font-size: medium ; 
+    font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+    width: 100%;
+  }

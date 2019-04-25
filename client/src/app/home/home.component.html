@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+    <ng-template style="max-width: 500px;" #rt let-r="result" let-t="term">
+        <b>
+            <ngb-highlight [result]="r.nom" [term]="t"></ngb-highlight>
+        </b>
+        <br />
+        <ngb-highlight [result]="r.description" [term]="t"></ngb-highlight>
+    </ng-template>
+
+    <div class="container">
+        <div class="card card-container">
+
+            <div class="template">
+                <input id="typeahead-template" placeholder="Rechercher un script..." type="text" class="form-control"
+                    [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt" (focus)="focus$.next($event.target.value)"
+                    (click)="click$.next($event.target.value)" (selectItem)="selectedItem($event)" [inputFormatter]="formatter" />
+            </div>
+
+
+            <div *ngIf="model">
+                <div>
+                    <b>{{ model.nom }}</b>
+                </div>
+                <hr>
+                <div>
+                    {{ model.description }}
+                </div>
+                <hr>
+                <br>
+                <div>
+                    <u>Paramètres :</u>
+                </div>
+                <br>
+                <div>
+                    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+                        <div *ngFor="let question of model.parametres">
+                            <app-question [question]="question" [form]="form"></app-question>
+                        </div>
+
+                        <div class="form-row">
+                            <button class="btn btn-success" (click)="execute_env='formation'" type="submit" [disabled]="!form.valid">Executer en preprod</button>
+                            &nbsp;
+                            <button class="btn btn-primary" (click)="execute_env='prod'" type="submit" [disabled]="!form.valid">Executer en prod</button>
+                        </div>
+                    </form>
+
+                    <br />
+                    <div *ngIf="payLoad">
+                        
+                        <div *ngIf="payLoad.status == 0">
+                                <div class="alert alert-success">script éxécuté avec succès</div>
+                        </div>
+                        <div *ngIf="payLoad.status != 0">
+                                <div class="alert alert-danger">Une erreur est survenue lors de l'éxécution du script</div>
+                        </div>
+                        <br />
+                        <div *ngIf="payLoad.result">
+                                <div>
+                                    <u>Résultats :</u>
+                                </div>
+                                <br>
+                                <div>
+                                    <div class="bash">
+                                        <div  *ngFor="let res of payLoad.result">
+                                                {{res}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+</div>
