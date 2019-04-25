@@ -18,7 +18,7 @@ So with this application, maintainers can write parametized scripts (SQL ad Bash
 
 # Implementation
 
-The frontend is an Angular 6 app (with ng-bootstrap) and the backend is a very basic PHP app (no framework). Ther is no database but a single config file.
+The frontend is an Angular 6 app (with ng-bootstrap) and the backend is a very basic PHP app (no framework). There is no database but a single config file.
 
 The final app is located in the `dist` directory (created with the `npm run build` command).  
 the npm scripts inside the client directory can be use to build the client angular app and copy the server to the `dist` directory for deployment.
