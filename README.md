@@ -6,7 +6,7 @@ A Web App for executing maintenance scripts to maintain an application for non t
 
 If you have a massive web application for your customer and you need to maintain and provide daily support for this application like  :  
 
-- correct corrupted record in the database
+- correct corrupted records in the database
 - correct records because of mistakes of users 
 - make special modifications in the database
 - relaunch backgroud job failed for unknown reason
